@@ -148,4 +148,39 @@ class ArithmeticAndLogicalOperationServiceTest {
         }
     }
 
+    /*
+    Write a Java program to find the second largest number in an array.
+        Write a Java program to count the number of vowels in a given string.
+        Write a Java program to reverse a string using the StringBuilder class.
+        Write a Java program to check if a given number is a palindrome or not.
+        Write a Java program to find the sum of all even numbers in an array.
+        Write a Java program to find the intersection of two arrays.
+        Write a Java program to convert a given string to lowercase using the toLowerCase() method.
+        Write a Java program to sort a given array in descending order using the Arrays.sort() method.
+        Write a Java program to remove all duplicates from an array.
+        Write a Java program to find the maximum and minimum elements in an array.
+    */
+
+    @Test
+    void secondLargestElementTest() {
+        int[] numbers = new int[5];
+        numbers[0] = 1;
+        numbers[1] = 2;
+        numbers[2] = 3;
+        numbers[3] = 4;
+        numbers[4] = 5;
+        int length = numbers.length;
+        int asInt = Arrays.stream(numbers).distinct().sorted().skip(numbers.length - 2).findFirst().orElse(0);
+        System.out.println(asInt);
+    }
+
+    @Test
+    void countTheNumberOffVowelsTest(){
+        String words = "helloWord";
+
+
+    }
+
+
+
 }
