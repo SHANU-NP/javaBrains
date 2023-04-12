@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @ExtendWith(MockitoExtension.class)
 class ArithmeticAndLogicalOperationServiceTest {
@@ -153,6 +154,7 @@ class ArithmeticAndLogicalOperationServiceTest {
         Write a Java program to count the number of vowels in a given string.
         Write a Java program to reverse a string using the StringBuilder class.
         Write a Java program to check if a given number is a palindrome or not.
+
         Write a Java program to find the sum of all even numbers in an array.
         Write a Java program to find the intersection of two arrays.
         Write a Java program to convert a given string to lowercase using the toLowerCase() method.
@@ -177,6 +179,104 @@ class ArithmeticAndLogicalOperationServiceTest {
     @Test
     void countTheNumberOffVowelsTest(){
         String words = "helloWord";
+
+
+    }
+
+    private int[] getArray(){
+        int[] numbers = new int[5];
+        numbers[0] = 1;
+        numbers[1] = 2;
+        numbers[2] = 33;
+        numbers[3] = 4;
+        numbers[4] = 5;
+        return numbers;
+    }
+
+
+    //Write a Java program to find the sum of all even numbers in an array.
+    @Test
+    void sumOfEvenNumberTest(){
+        int[] array = getArray();
+        int sum = 0;
+        for (int i = 0; i < array.length; i++){
+            if (array[i] % 2 == 0){
+                sum += array[i];
+            }
+        }
+        System.out.println("SUM OF EVEN NUMBERS : "+sum);
+    }
+
+    //Write a Java program to find the intersection of two arrays.
+    @Test
+    void findTheIntersectionOfTwoArrayTest(){
+        int[] arr1 = {1, 2, 3, 4, 5};
+        int[] arr2 = {3, 4, 5, 6, 7};
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        for (int i : arr1){
+            set1.add(i);
+        }
+
+        for (int i : arr2){
+            if (set1.contains(i)){
+                set2.add(i);
+            }
+        }
+        System.out.println("INTERSECTION : "+set2);
+    }
+
+    //Write a Java program to convert a given string to lowercase using the toLowerCase() method.
+    @Test
+    void toLoweCaseTest(){
+        String word = "HELLOWORLD";
+        String s = word.toLowerCase();
+        System.out.println("TO LOWER CASE : "+s);
+    }
+
+    // Write a Java program to sort a given array in descending order using the Arrays.sort() method.
+    @Test
+    void sortArrayTest(){
+        int[] array = getArray();
+        Arrays.sort(array);
+        System.out.println("SORTED ARRAY "+Arrays.toString(array));
+
+
+    }
+
+    /*give an array of integers nums and an integer target, return indices of the two numbers such that they add up to target in java  best approch*/
+    @Test
+    void indicesOfTwoNumbersTest(){
+
+        int[] number = new int[5];
+        number[0] = 1;
+        number[1] = 3;
+        number[2] = 8;
+        number[3] = 2;
+        number[4] = 5;
+        int target = 8;
+        Map<Integer,Integer> map = new HashMap<>();
+
+        for (int i = 0; i < number.length; i ++){
+            int complement = target - number[i];
+
+            if (map.containsKey(complement)){
+
+                int[] ints = {i, map.get(complement)};
+                System.out.println(Arrays.toString(ints));
+                break;
+
+            }
+            else {
+
+                map.put(number[i],i);
+            }
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                System.out.println(entry.getKey() + " => " + entry.getValue());
+            }
+
+        }
+
 
 
     }
