@@ -1,4 +1,4 @@
-package com.javaBrains.javaBrains.configurations;
+package com.javaBrains.javaBrains.config;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,4 +11,5 @@ import org.springframework.context.annotation.Configuration;
 public class JavaBrainsProperties {
 
     private String serviceBaseUrl;
+    private String kafkaTopicNotification;
 }

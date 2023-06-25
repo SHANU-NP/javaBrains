@@ -3,6 +3,7 @@ package com.javaBrains.javaBrains.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.javaBrains.javaBrains.config.JavaBrainsProperties;
 import com.javaBrains.javaBrains.model.CoreKafKaMessage;
 import com.javaBrains.javaBrains.model.User;
 import lombok.extern.slf4j.Slf4j;
@@ -12,14 +13,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaListenerService {
 
+    private final JavaBrainsProperties javaBrainsProperties;
     private final ObjectMapper objectMapper;
 
-    public KafkaListenerService(ObjectMapper objectMapper) {
+    public KafkaListenerService(JavaBrainsProperties javaBrainsProperties, ObjectMapper objectMapper) {
+        this.javaBrainsProperties = javaBrainsProperties;
         this.objectMapper = objectMapper;
     }
 
 
-    @KafkaListener(topics = "${javabrain.constant.kafka.topic.notification}")
+    @KafkaListener(topics = "${java-brains.properties.kafka-topic-notification}")
     public void notificationListener(String message) throws JsonProcessingException {
         CoreKafKaMessage coreKafKaMessage = objectMapper.readValue(message, new TypeReference<CoreKafKaMessage>() {});
 
