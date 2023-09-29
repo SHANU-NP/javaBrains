@@ -56,10 +56,7 @@
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:2.7.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.7.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.3.26" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.26" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.26" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.26" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.26" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.7.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.7.10" level="project" />
@@ -87,6 +84,9 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.26" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.26" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.26" level="project" />
+    <orderEntry type="library" name="Maven: org.quartz-scheduler:quartz:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.15" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.postgresql:postgresql:42.3.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.checkerframework:checker-qual:3.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.26" level="project" />
@@ -119,5 +119,8 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.26" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.26" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.9.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.26" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.26" level="project" />
   </component>
 </module>
