@@ -7,6 +7,8 @@ import com.javaBrains.javaBrains.model.request.StudentRegisterRequest;
 import com.javaBrains.javaBrains.service.repoHandler.StudentRepoHandler;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentService {
 
@@ -25,5 +27,9 @@ public class StudentService {
         student.setAddress(request.getAddress());
         studentRepoHandler.registerStudent(student);
         return new SuccessResponse(StudentConstants.SUCCESS);
+    }
+
+    public List<Student> fetchAllRegisteredStudents() {
+        return studentRepoHandler.fetchAllStudents();
     }
 }
