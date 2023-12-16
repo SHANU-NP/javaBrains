@@ -5,6 +5,7 @@ import com.javaBrains.javaBrains.repository.student.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentRepoHandler {
@@ -18,4 +19,8 @@ public class StudentRepoHandler {
     public void registerStudent(Student student) {studentRepository.save(student);}
 
     public List<Student> fetchAllStudents() {return studentRepository.findAll();}
+
+    public Optional<Student> fetchStudentById(String id) {
+        return studentRepository.findById(Long.parseLong(id));
+    }
 }

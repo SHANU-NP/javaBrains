@@ -5,6 +5,7 @@ import com.javaBrains.javaBrains.service.student.StudentService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService {
@@ -16,5 +17,9 @@ public class AdminService {
 
     public List<Student> fetchAllRegisteredStudents() {
         return studentService.fetchAllRegisteredStudents();
+    }
+
+    public Optional<Student> fetchStudentByAdmissionNumber(String id) {
+        return studentService.fetchStudentByAdmissionNumber(id);
     }
 }

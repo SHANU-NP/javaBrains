@@ -8,6 +8,7 @@ import com.javaBrains.javaBrains.service.repoHandler.StudentRepoHandler;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -31,5 +32,9 @@ public class StudentService {
 
     public List<Student> fetchAllRegisteredStudents() {
         return studentRepoHandler.fetchAllStudents();
+    }
+
+    public Optional<Student> fetchStudentByAdmissionNumber(String id) {
+        return studentRepoHandler.fetchStudentById(id);
     }
 }
