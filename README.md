@@ -17,4 +17,3 @@ required information of students :
 5. batch
 6. address 
 7. contactNumber 
-
