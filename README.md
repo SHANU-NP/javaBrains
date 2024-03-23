@@ -16,4 +16,4 @@ required information of students :
 4. dob
 5. batch
 6. address
-7. contactNumber
+7. contactNumber 
