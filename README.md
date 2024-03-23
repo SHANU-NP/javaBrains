@@ -15,6 +15,6 @@ required information of students :
 3. lastName
 4. dob
 5. batch
-6. address
+6. address 
 7. contactNumber 
 
