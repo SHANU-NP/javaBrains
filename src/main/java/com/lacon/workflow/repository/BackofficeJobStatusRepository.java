@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface BackofficeJobStatusRepository extends JpaRepository<JobStatus,Long> {
-    List<JobStatus> findByOperationAndUserId(String operation,UUID userId);
+    List<JobStatus> findByOperationAndUserId(String operation, UUID userId);
+    JobStatus findByOperationAndJobId(String operation,UUID userId);
 
 }

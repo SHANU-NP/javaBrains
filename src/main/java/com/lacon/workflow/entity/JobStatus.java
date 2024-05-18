@@ -1,11 +1,13 @@
 package com.lacon.workflow.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -42,4 +44,9 @@ public class JobStatus {
     @Setter
     @Column(name = "job_status")
     private String jobStatus;
+
+    @Setter
+    @Getter
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssX")
+    private OffsetDateTime time;
 }

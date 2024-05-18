@@ -28,4 +28,17 @@ public class BackofficeService {
             return jobResponse;
         }).collect(Collectors.toList());
     }
+
+    //set job status
+    public void setJobStatus(JobStatus jobStatus) {
+        JobStatus job = jobStatusRepository.findByOperationAndJobId(jobStatus.getOperation(), jobStatus.getJobId());
+        if (job == null)
+            jobStatusRepository.save(jobStatus);
+        else {
+            job.setJobStatus(jobStatus.getJobStatus());
+            job.setUserId(jobStatus.getUserId());
+            job.setTime(jobStatus.getTime());
+            jobStatusRepository.save(jobStatus);
+        }
+    }
 }

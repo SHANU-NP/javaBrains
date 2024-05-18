@@ -7,6 +7,7 @@ import com.lacon.workflow.model.response.SuccessResponse;
 import com.lacon.workflow.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -30,5 +31,11 @@ public class UserService {
         userRepository.save(user);
         return new SuccessResponse(Constants.REGISTRATION_SUCCESS);
 
+    }
+
+
+    //get all users by role
+    public List<User> getUsersByRole(String role) {
+        return userRepository.findAllByRole(role);
     }
 }
