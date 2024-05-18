@@ -1,13 +1,16 @@
 package com.lacon.workflow.controller;
 
 
+import com.lacon.workflow.constants.Constants;
 import com.lacon.workflow.model.request.RegistrationRequest;
+import com.lacon.workflow.model.response.RoleResponse;
 import com.lacon.workflow.model.response.SuccessResponse;
 import com.lacon.workflow.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static com.lacon.workflow.constants.Constants.*;
 
 @RestController
 @RequestMapping("/v1")
@@ -24,6 +27,17 @@ public class CommonController {
     public SuccessResponse registerUser(@RequestBody RegistrationRequest request){
         return userService.registerUser(request);
     }
+
+    @GetMapping("/user/roles")
+    public RoleResponse getRoles(){
+        return new RoleResponse(List.of(ROLE_CUSTOMER,ROLE_DOCUMENT_VERIFIER,ROLE_SUPER_VISOR));
+    }
+
+    //todo: login Api
+    //login Api
+
+
+
 
 
 
