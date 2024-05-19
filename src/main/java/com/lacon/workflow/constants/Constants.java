@@ -2,6 +2,8 @@ package com.lacon.workflow.constants;
 
 public class Constants {
 
+
+
     private Constants() {}
 
     public static final String DOCUMENT_VERIFICATION_PROCESS_DEFINITION_KEY = "DOCUMENT_VERIFICATION_FLOW";
@@ -32,6 +34,7 @@ public class Constants {
     public static final String DOCUMENT_SUBMISSION_SUCCESSFUL = "Document submitted successfully";
     public static final String REGISTRATION_SUCCESS = "Registration is successful";
     public static final String DECISION_SUBMISSION_SUCCESS_FULL = "Submitted successfully";
+    public static final String INVALID_CREDENTIALS = "invalid username or password";
 
 
 }

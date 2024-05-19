@@ -2,7 +2,9 @@ package com.lacon.workflow.controller;
 
 
 import com.lacon.workflow.constants.Constants;
+import com.lacon.workflow.model.request.LoginRequest;
 import com.lacon.workflow.model.request.RegistrationRequest;
+import com.lacon.workflow.model.response.LoginResponse;
 import com.lacon.workflow.model.response.RoleResponse;
 import com.lacon.workflow.model.response.SuccessResponse;
 import com.lacon.workflow.service.UserService;
@@ -33,8 +35,10 @@ public class CommonController {
         return new RoleResponse(List.of(ROLE_CUSTOMER,ROLE_DOCUMENT_VERIFIER,ROLE_SUPER_VISOR));
     }
 
-    //todo: login Api
-    //login Api
+    @PostMapping("/user/login")
+    public LoginResponse loginUser(@RequestBody LoginRequest loginRequest){
+        return userService.loginUser(loginRequest);
+    }
 
 
 

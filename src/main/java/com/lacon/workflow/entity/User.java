@@ -40,6 +40,7 @@ public class User {
     private String phone;
 
     @Setter
+    @Getter
     @Column(name = "password")
     private String password;
 
