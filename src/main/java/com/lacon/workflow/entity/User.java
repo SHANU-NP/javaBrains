@@ -21,8 +21,8 @@ public class User {
 
     @Setter
     @Getter
-    @Column(name = "customer_id")
-    private UUID customerId;
+    @Column(name = "user_id")
+    private UUID userId;
 
     @Setter
     @Getter

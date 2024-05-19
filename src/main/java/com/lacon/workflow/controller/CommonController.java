@@ -28,7 +28,7 @@ public class CommonController {
         return userService.registerUser(request);
     }
 
-    @GetMapping("/user/roles")
+    @GetMapping("/user/role")
     public RoleResponse getRoles(){
         return new RoleResponse(List.of(ROLE_CUSTOMER,ROLE_DOCUMENT_VERIFIER,ROLE_SUPER_VISOR));
     }

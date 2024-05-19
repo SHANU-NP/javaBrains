@@ -26,11 +26,12 @@ import static com.lacon.workflow.constants.Constants.*;
 @Service
 public class WorkFlowService {
 private static final Logger log = LoggerFactory.getLogger(WorkFlowService.class);
-private final BackofficeJobStatusRepository backofficeJobStatusRepository;
+private final WorkFlowAssigneeService workFlowAssigneeService;
 
-    public WorkFlowService(BackofficeJobStatusRepository backofficeJobStatusRepository) {
-        this.backofficeJobStatusRepository = backofficeJobStatusRepository;
+    public WorkFlowService(WorkFlowAssigneeService workFlowAssigneeService) {
+        this.workFlowAssigneeService = workFlowAssigneeService;
     }
+
 
     public void initiateDocumentVerificationFlow(String jobId,String customerId) {
 
@@ -50,7 +51,7 @@ private final BackofficeJobStatusRepository backofficeJobStatusRepository;
     }
 
 
-    public void updateVariables(String operation, UpdateVariableRequest updateVariableRequest){
+    public void updateVariables(UpdateVariableRequest updateVariableRequest){
 
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RuntimeService runtimeService = processEngine.getRuntimeService();
@@ -100,8 +101,7 @@ private final BackofficeJobStatusRepository backofficeJobStatusRepository;
         jobStatus.setTime(OffsetDateTime.now());
         jobStatus.setCustomerId(UUID.fromString(customerId));
         jobStatus.setOperation(operation);
-        backofficeJobStatusRepository.save(jobStatus);
-
+        workFlowAssigneeService.updateJobStatus(jobStatus);
         taskService.complete(id);
     }
 }

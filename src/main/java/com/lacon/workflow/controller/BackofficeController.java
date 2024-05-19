@@ -1,26 +1,35 @@
 package com.lacon.workflow.controller;
 
 
+import com.lacon.workflow.model.request.camunda.UpdateVariableRequest;
 import com.lacon.workflow.model.response.JobResponse;
+import com.lacon.workflow.model.response.SuccessResponse;
+import com.lacon.workflow.service.backoffice.BackofficeJobService;
 import com.lacon.workflow.service.backoffice.BackofficeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/v1")
 public class BackofficeController {
+    private final BackofficeJobService backofficeJobService;
     private final BackofficeService backofficeService;
 
-    public BackofficeController(BackofficeService backofficeService) {
+    public BackofficeController(BackofficeJobService backofficeJobService, BackofficeService backofficeService) {
+        this.backofficeJobService = backofficeJobService;
         this.backofficeService = backofficeService;
     }
 
+
+    //TODO: after implementing spring boot security , user ID can be fetch from spring security context
     @GetMapping("/backoffice/job/{userId}/{operation}")
     public List<JobResponse> getJobs(@PathVariable("userId") String userId, @PathVariable(value = "operation") String operation){
-        return backofficeService.getJobs(userId,operation);
+        return backofficeJobService.getJobs(userId,operation);
+    }
+
+    @PostMapping("/backoffice/decision")
+    public SuccessResponse documentDecision(@RequestBody UpdateVariableRequest request){
+        return backofficeService.updateDecision(request);
     }
 }

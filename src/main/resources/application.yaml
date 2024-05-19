@@ -2,12 +2,12 @@ spring:
   application:
     name: lacon
   datasource:
-    url: jdbc:postgresql://localhost:5432/j1
+    url: jdbc:postgresql://localhost:5432/j2
     username: postgres
     password: root
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 server:
   port: 8080
@@ -21,3 +21,4 @@ camunda:
     generic-properties:
       properties:
         enforceHistoryTimeToLive: false
+  history-level: full

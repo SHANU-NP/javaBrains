@@ -49,7 +49,6 @@ public class DocumentVerificationListeners implements TaskListener {
             workFlowAssigneeService.updateJobStatus(jobStatus);
 
         });
-        log.info("DOCUMENT VERIFICATION FLOW : document verifier job has ended for job id : {} customerID : {}",jobId,customerId);
 
 
     }

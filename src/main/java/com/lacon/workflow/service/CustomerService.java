@@ -1,10 +1,12 @@
 package com.lacon.workflow.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lacon.workflow.constants.Constants;
 import com.lacon.workflow.entity.CustomerDocumentDetails;
 import com.lacon.workflow.model.request.DocumentVerificationRequest;
+import com.lacon.workflow.model.response.CustomerDocumentDetailsResponse;
 import com.lacon.workflow.model.response.SuccessResponse;
 import com.lacon.workflow.repository.CustomerDocumentDetailRepository;
 import com.lacon.workflow.service.camunda.WorkFlowService;
@@ -39,5 +41,24 @@ public class CustomerService {
         workFlowService.initiateDocumentVerificationFlow(documentDetails.getJobId().toString(),documentDetails.getCustomerId().toString());
         return new SuccessResponse(Constants.DOCUMENT_SUBMISSION_SUCCESSFUL);
 
+    }
+
+    public void updateDocumentStatus(String jobId,String status) {
+        CustomerDocumentDetails documentDetails = customerDocumentDetailRepository.findByJobId(UUID.fromString(jobId));
+        documentDetails.setJobStatus(status);
+        customerDocumentDetailRepository.save(documentDetails);
+    }
+
+    public CustomerDocumentDetailsResponse getCustomerDocumentDetails(String customerId) throws JsonProcessingException {
+        CustomerDocumentDetails documentDetails = customerDocumentDetailRepository.findByCustomerId(UUID.fromString(customerId));
+        if (documentDetails == null){
+            return null;
+        }
+
+        CustomerDocumentDetailsResponse response = new CustomerDocumentDetailsResponse();
+        response.setJobId(documentDetails.getJobId().toString());
+        response.setStatus(documentDetails.getJobStatus());
+        response.setDocumentDetails(objectMapper.readValue(documentDetails.getDocumentDetails(), new TypeReference<>() {}));
+        return response;
     }
 }

@@ -47,7 +47,7 @@ public class SupervisorListener implements TaskListener {
             jobStatus.setTime(OffsetDateTime.now());
             workFlowAssigneeService.updateJobStatus(jobStatus);
         });
-        log.info("DOCUMENT VERIFICATION FLOW : supervisor job has ended for job id : {} customerID : {}",jobId,customerId);
+
 
 
     }

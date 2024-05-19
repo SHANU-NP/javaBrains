@@ -27,7 +27,7 @@ public class UserService {
         user.setPhone(request.getPhone());
         user.setPassword(request.getPassword());
         user.setRole(request.getRole());
-        user.setCustomerId(UUID.randomUUID());
+        user.setUserId(UUID.randomUUID());
         userRepository.save(user);
         return new SuccessResponse(Constants.REGISTRATION_SUCCESS);
 
