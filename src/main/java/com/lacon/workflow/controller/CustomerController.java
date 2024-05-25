@@ -5,6 +5,7 @@ import com.lacon.workflow.model.request.DocumentVerificationRequest;
 import com.lacon.workflow.model.response.CustomerDocumentDetailsResponse;
 import com.lacon.workflow.model.response.SuccessResponse;
 import com.lacon.workflow.service.CustomerService;
+import com.lacon.workflow.service.core.SecurityUtil;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,9 +24,11 @@ public class CustomerController {
         return customerService.documentVerificationRequestInitiate(documentVerificationRequest);
     }
 
-    @GetMapping("/customer/{customerId}/document-status")
-    public CustomerDocumentDetailsResponse getCustomerDocumentDetails(@PathVariable(value = "customerId") String customerId) throws JsonProcessingException {
-        return customerService.getCustomerDocumentDetails(customerId);
+    @GetMapping("/customer/document-status")
+    public CustomerDocumentDetailsResponse getCustomerDocumentDetails() throws JsonProcessingException {
+        return customerService.getCustomerDocumentDetails(SecurityUtil.currentUserId());
+
+
     }
 
 

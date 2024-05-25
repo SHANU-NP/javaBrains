@@ -6,6 +6,7 @@ import com.lacon.workflow.model.response.JobResponse;
 import com.lacon.workflow.model.response.SuccessResponse;
 import com.lacon.workflow.service.backoffice.BackofficeJobService;
 import com.lacon.workflow.service.backoffice.BackofficeService;
+import com.lacon.workflow.service.core.SecurityUtil;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,10 +23,10 @@ public class BackofficeController {
     }
 
 
-    //TODO: after implementing spring boot security , user ID can be fetch from spring security context
-    @GetMapping("/backoffice/job/{userId}/{operation}")
-    public List<JobResponse> getJobs(@PathVariable("userId") String userId, @PathVariable(value = "operation") String operation){
-        return backofficeJobService.getJobs(userId,operation);
+
+    @GetMapping("/backoffice/job/{operation}")
+    public List<JobResponse> getJobs(@PathVariable(value = "operation") String operation){
+        return backofficeJobService.getJobs(SecurityUtil.currentUserId(),operation);
     }
 
     @PostMapping("/backoffice/decision")

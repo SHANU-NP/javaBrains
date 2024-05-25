@@ -58,12 +58,11 @@ public class UserService  {
     public LoginResponse loginUser(LoginRequest loginRequest) {
         User user = userRepository.findByPhone(loginRequest.getUsername())
                 .orElseThrow(() -> new BadCredentialsException("Invalid credentials"));
-
         try {
             // Match the raw password with the encoded password
             if (bCryptPasswordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
                 Authentication authenticate = authenticationManager.authenticate(
-                        new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+                        new UsernamePasswordAuthenticationToken(String.valueOf(user.getUserId()), loginRequest.getPassword()));
 
                 if (authenticate.isAuthenticated()) {
                     String token = jwtService.generateToken(user);

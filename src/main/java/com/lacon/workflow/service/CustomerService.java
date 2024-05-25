@@ -10,6 +10,7 @@ import com.lacon.workflow.model.response.CustomerDocumentDetailsResponse;
 import com.lacon.workflow.model.response.SuccessResponse;
 import com.lacon.workflow.repository.CustomerDocumentDetailRepository;
 import com.lacon.workflow.service.camunda.WorkFlowService;
+import com.lacon.workflow.service.core.SecurityUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -32,7 +33,7 @@ public class CustomerService {
 
     public SuccessResponse documentVerificationRequestInitiate(DocumentVerificationRequest documentVerificationRequest) throws JsonProcessingException {
         CustomerDocumentDetails documentDetails = new CustomerDocumentDetails();
-        documentDetails.setCustomerId(UUID.randomUUID());
+        documentDetails.setCustomerId(UUID.fromString(SecurityUtil.currentUserId()));
         documentDetails.setJobStatus(JOB_STATUS_PENDING);
         documentDetails.setDocumentDetails(objectMapper.writeValueAsString(documentVerificationRequest));
         documentDetails.setJobId(UUID.randomUUID());
