@@ -6,6 +6,7 @@ import com.lacon.workflow.model.request.LoginRequest;
 import com.lacon.workflow.model.request.RegistrationRequest;
 import com.lacon.workflow.model.response.LoginResponse;
 import com.lacon.workflow.model.response.SuccessResponse;
+import com.lacon.workflow.model.response.UserResponse;
 import com.lacon.workflow.repository.UserRepository;
 import com.lacon.workflow.service.jwt.JWTService;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService  {
@@ -76,5 +78,9 @@ public class UserService  {
             throw new RuntimeException("Login failed", e);
         }
 
+    }
+
+    public List<UserResponse> getAllUsers(){
+        return userRepository.findAll().stream().map(UserResponse::new).collect(Collectors.toList());
     }
 }

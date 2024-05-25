@@ -7,11 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
     List<User> findAllByRole(String role);
 
     Optional<User> findByPhone(String username);
+    Optional<User> findByUserId(UUID userId);
 
 }

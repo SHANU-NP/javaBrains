@@ -5,9 +5,13 @@ spring:
     url: jdbc:postgresql://localhost:5432/j2
     username: postgres
     password: root
+    driverClassName: org.postgresql.Driver
+    platform: postgres
   jpa:
     hibernate:
       ddl-auto: update
+      database: POSTGRESQL
+      show-sql: true
 
 server:
   port: 8080

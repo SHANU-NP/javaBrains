@@ -1,12 +1,12 @@
 package com.lacon.workflow.controller;
 
 
-import com.lacon.workflow.constants.Constants;
 import com.lacon.workflow.model.request.LoginRequest;
 import com.lacon.workflow.model.request.RegistrationRequest;
 import com.lacon.workflow.model.response.LoginResponse;
 import com.lacon.workflow.model.response.RoleResponse;
 import com.lacon.workflow.model.response.SuccessResponse;
+import com.lacon.workflow.model.response.UserResponse;
 import com.lacon.workflow.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +40,10 @@ public class CommonController {
         return userService.loginUser(loginRequest);
     }
 
+    @GetMapping("/users")
+    public List<UserResponse> getAllUsers(){
+        return userService.getAllUsers();
+    }
 
 
 

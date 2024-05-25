@@ -2,13 +2,15 @@ package com.lacon.workflow.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table(name = "customer_document_details")
-public class CustomerDocumentDetails {
+public class CustomerDocumentDetails extends DBTimeStamp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")

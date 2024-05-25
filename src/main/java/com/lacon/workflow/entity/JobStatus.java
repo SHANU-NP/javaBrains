@@ -14,7 +14,7 @@ import java.util.UUID;
 @Table(name = "job_status")
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobStatus {
+public class JobStatus extends DBTimeStamp{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq")

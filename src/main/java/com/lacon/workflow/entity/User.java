@@ -1,19 +1,15 @@
 package com.lacon.workflow.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
-
 
 @Entity
 @Table(name = "users")
 @AllArgsConstructor
-@NoArgsConstructor
-public class User {
+public class User extends DBTimeStamp{
+    public User() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq")
